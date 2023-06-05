@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+body {
+  font: 18px/36px 'Poppins', arial, sans-serif;
+  background-color: #ccc;
+}
+h1 {
+  font-size: 50px;
+  font-weight: bold;
+  margin: 50px 0;
+  text-align: center;
+  text-shadow: 1px 2px 2px aliceblue;
+}
+.container {
+  width: 900px;
+  background-color: aliceblue;
+  margin: auto;
+  padding: 30px;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.4);
+  border-radius: 5px;
+}
+.gallery li {
+  float: left;
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin-right: 20px;
+  border: 5px solid #444;
+  /* overflow: hidden; */
+  box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.5);
+}
+.gallery li,
+.gallery li img,
+.gallery li span {
+  border-radius: 50%;
+}
+.gallery li span {
+  display: block;
+  width: 120px;
+  height: 120px;
+  background-color: rgba(124, 146, 146, 0.5);
+  position: absolute;
+  top: 0;
+  text-align: center;
+  line-height: 120px;
+  color: aliceblue;
+  text-shadow: 1px 2px 1px #000;
+  opacity: 0;
+  transition: 0.3s;
+  transform: scale(0) rotate(0);
+}
+.gallery li a:hover span {
+  opacity: 1;
+  transform: scale(1) rotate(360deg);
+}
+/* overlay */
+.overlay {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 9999;
+  transition: 0.8s;
+  text-align: center;
+  padding: 100px 0;
+}
+.overlay:target {
+  width: auto;
+  height: auto;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.overlay .img-full {
+  max-height: 100%;
+  border-radius: 0;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+}
+.overlay:target img {
+  animation: fade 1s;
+}
+.overlay .close {
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  margin-left: -30px;
+  color: aliceblue;
+  text-decoration: none;
+  background-color: #000;
+  border: 1px solid aliceblue;
+  line-height: 14px;
+  padding: 5px;
+  opacity: 0;
+}
+.overlay .close:hover {
+  color: #111;
+  background-color: rgba(255, 25, 25, 0.959);
+}
+.overlay:target .close {
+  animation: slidefade 0.5s 0.5s forwards;
+}
+.overlay:target .next,
+.overlay:target .prev {
+  animation: fade 0.5s 0.5s forwards;
+}
+
+/* navigasi */
+
+.next,
+.prev {
+  display: inline;
+  position: absolute;
+  top: 42%;
+  margin-right: 40px;
+  font-size: 120px;
+  opacity: 0;
+}
+.prev {
+  left: 28.5%;
+}
+i {
+  color: rgba(240, 248, 255, 0.849);
+}
+i:hover {
+  color: #111;
+}
+/* animation */
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes zoomfade {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes slidefade {
+  0% {
+    opacity: 0;
+    margin-top: -20px;
+  }
+  100% {
+    opacity: 1;
+    margin-top: 0;
+  }
+}
+.clear {
+  clear: both;
+}
+
+.mr4,
+.bb {
+  width: 120px;
+  height: 120px;
+}
